@@ -2,9 +2,10 @@ package sc.ala.test
 
 import org.scalatest.FunSuite
 import org.scalatest.matchers.ShouldMatchers
-import sc.ala.scalerity._
-import sc.ala.scalerity.browser._
 import com.gargoylesoftware.htmlunit.BrowserVersion
+
+import sc.ala.scalerity.Browser
+import sc.ala.scalerity.browser.PageNotFound
 
 class BrowserTest extends FunSuite with ShouldMatchers {
   val google = "http://www.google.com"
@@ -13,12 +14,14 @@ class BrowserTest extends FunSuite with ShouldMatchers {
     expect(BrowserVersion.FIREFOX_3_6) { new Browser().browserVersion }
   }
 
-  test("goto returns the url") {
-    expect(google) { new Browser().goto(google) }
+  test("goto returns an url") {
+    val b = new Browser
+    // don't check url strictly to avoid localized url redirection
+    b.goto(google).toString should include("google")
   }
 
   test("html") {
-    Browser(google).html should not be('empty)
+    Browser(google).html should startWith("<")
   }
 
   test("html without url") {

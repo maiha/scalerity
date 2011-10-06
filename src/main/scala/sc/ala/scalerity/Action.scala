@@ -14,14 +14,14 @@ import com.gargoylesoftware.htmlunit.html.HtmlPage
 import sc.ala.scalerity._
 
 trait Action { this: Browser =>
-  def goto(url: String): String = {
+  def goto(url: String) = {
     val uri = url match {
       case u:String if u.contains("://") => u
       case u:String => "http://" + u
     }
 
     pagable = Some(client.getPage[HtmlPage](uri))
-    uri
+    this.url
   }
 
   // def source =

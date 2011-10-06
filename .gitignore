@@ -1,0 +1,7 @@
+/.idea/
+/project/boot/
+/project/build/target/
+/lib_managed/
+/lib/
+/target/
+/tmp

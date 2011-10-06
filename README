@@ -1,0 +1,40 @@
+scalerity
+=========
+
+  Scalerity = Scala + Celerity
+
+
+Usage
+=====
+
+  import sc.ala.scalerity._
+
+  val browser = new Browser
+  browser.goto("http://www.google.com")
+  browser.url   // => java.net.URL = http://www.google.co.jp/
+  browser.html  // => "<?xml version=...
+
+
+TODO
+====
+
+  browser.text_field(:name, 'q').value = 'Celerity'
+  browser.button(:name, 'btnG').click
+  
+
+Required
+========
+
+  * tested on scala-2.9.1.final
+
+
+Source
+======
+
+  http://github.com/maiha/scalerity
+
+
+Author
+======
+
+   maiha@wota.jp

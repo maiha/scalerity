@@ -11,7 +11,7 @@ package sc.ala.scalerity.browser
 
 trait Accessor { this: Core =>
 
-  def html = page.asXml.toString
+  def source = page.asXml.toString
   def url = page.getUrl
 
 }

@@ -6,7 +6,7 @@ import com.gargoylesoftware.htmlunit.BrowserVersion
 
 import sc.ala.scalerity.browser._
 
-class Browser extends Core with Action {
+class Browser extends Core with Action with Selenium {
   // configurable options
   def browser = "firefox"
 

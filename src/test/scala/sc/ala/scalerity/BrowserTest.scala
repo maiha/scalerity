@@ -20,12 +20,12 @@ class BrowserTest extends FunSuite with ShouldMatchers {
     b.goto(google).toString should include("google")
   }
 
-  test("html") {
-    Browser(google).html should startWith("<")
+  test("source") {
+    Browser(google).source should startWith("<")
   }
 
-  test("html without url") {
+  test("source without url") {
     val b = new Browser
-    evaluating { b.html } should produce [PageNotFound]
+    evaluating { b.source } should produce [PageNotFound]
   }
 }

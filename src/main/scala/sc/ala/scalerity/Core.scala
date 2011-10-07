@@ -19,12 +19,12 @@ trait Core extends Setup with Accessor {
   lazy val client = buildClient
   var pagable:Option[HtmlPage] = None
 
-  def page = pagable match {
+  def page: HtmlPage = pagable match {
     case Some(x:HtmlPage) => x
     case _ => pageNotFound
   }
 
-  def pageNotFound = {
+  def pageNotFound: Nothing = {
     throw new PageNotFound("No pages are loaded yet")
   }
 

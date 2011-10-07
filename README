@@ -11,15 +11,18 @@ Usage
 
   val browser = new Browser
   browser.goto("http://www.google.com")
-  browser.url   // => java.net.URL = http://www.google.com
-  browser.html  // => "<?xml version=...
+  browser.url    // => java.net.URL = http://www.google.com
+  browser.source // => "<?xml version=...
+
+  browser.goto("http://www.google.com/preferences?hl=en")
+  browser.select("name=hl", "value=ja")
 
 
 TODO
 ====
 
-  browser.text_field(:name, 'q').value = 'Celerity'
-  browser.button(:name, 'btnG').click
+  browser.value("name=q", "Scalerity")
+  browser.click("name=btnK")
   
 
 Required

@@ -6,15 +6,9 @@ import com.gargoylesoftware.htmlunit.BrowserVersion
 
 import sc.ala.scalerity.browser._
 
-class Browser extends Core with Action with Selenium {
+class Browser extends Core with Action with Selenium with Hue with TODO {
   // configurable options
   def browser = "firefox"
-
-  // not implemented yet
-  def select = sys.error("not implemented yet")
-  def open = sys.error("not implemented yet")
-  def clickAndWait = sys.error("not implemented yet")
-
 }
 
 object Browser {

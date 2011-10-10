@@ -24,6 +24,8 @@ trait Action { this: Browser =>
     this.url
   }
 
+  def value(locator:String, data:String) = {
 
-  // def source =
+    // this()
+  }
 }

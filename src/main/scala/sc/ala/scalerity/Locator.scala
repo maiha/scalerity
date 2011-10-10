@@ -33,4 +33,6 @@ object Locator {
     case R_VALUE(value) => ByValue(value)
     case _ => throw new CannotResolve(source)
   }
+
+  // def unapply()
 }

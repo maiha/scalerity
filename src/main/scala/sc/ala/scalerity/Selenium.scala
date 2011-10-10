@@ -36,19 +36,18 @@ trait Selenium { this: Browser =>
   }
 
 
-  def select(key:String): HtmlSelect = element(key) match {
-    case sel:HtmlSelect => sel
+  def select(locator:String): HtmlSelect = element(locator) match {
+    case s:HtmlSelect  => s
     case e:HtmlElement =>
-      elementNotFound("[%s] expected Select, but got %s".format(key, e.getClass.getName))
-
+      elementNotFound("[%s] expected Select, but got %s".format(locator, e.getClass.getName))
   }
 
-  def element(key:String) = (Locator(key) match {
+  def element(locator:String): HtmlElement = (Locator(locator) match {
     case ById(id)     => page.getElementById(id)
     case ByName(name) => page.getElementByName(name)
   }) match {
     case e:HtmlElement => e
-    case _ => elementNotFound(key)
+    case _ => elementNotFound(locator)
   }
 
 

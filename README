@@ -14,11 +14,17 @@ Usage
   browser.url    // => java.net.URL = http://www.google.com
   browser.source // => "<?xml version=...
 
+  // Like Selenium
+  import sc.ala.scalerity.Selenium.Conversions._
+
+  browser.goto("http://www.google.com/preferences?hl=en")
+  browser.select("name=hl").value  // => "en"
+
 
 TODO
 ====
 
-  browser.goto("http://www.google.com/preferences?hl=en")
+  browser.select("name=hl").value = "ja"
   browser.select("name=hl", "value=ja")
 
   browser.value("name=q", "Scalerity")

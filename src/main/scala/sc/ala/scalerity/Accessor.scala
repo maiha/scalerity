@@ -1,3 +1,5 @@
+package sc.ala.scalerity
+
 /**
  * Created by IntelliJ IDEA.
  * User: maiha
@@ -6,8 +8,6 @@
  * To change this template use File | Settings | File Templates.
  */
 
-
-package sc.ala.scalerity.browser
 
 trait Accessor { this: Core =>
 

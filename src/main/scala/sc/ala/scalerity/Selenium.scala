@@ -1,4 +1,4 @@
-package sc.ala.scalerity.browser
+package sc.ala.scalerity
 
 /**
  * Created by IntelliJ IDEA.
@@ -12,14 +12,39 @@ import com.gargoylesoftware.htmlunit.html.HtmlPage
 import com.gargoylesoftware.htmlunit.html.HtmlElement
 import com.gargoylesoftware.htmlunit.html.HtmlSelect
 import com.gargoylesoftware.htmlunit.html.HtmlOption
-
-import sc.ala.scalerity.{Browser,Locator}
+import be.roam.hue.doj._
 import sc.ala.scalerity._
 
 class ElementNotFound(msg:String) extends RuntimeException(msg)
 class OptionNotFound(msg:String) extends RuntimeException(msg)
 
+object Selenium {
+  object Select {
+    def default = ""
+  }
+
+  case class Select(element: HtmlSelect) {
+    def value = {
+      val options = element.getSelectedOptions
+      options.size match {
+        case 0 => Select.default
+        case _ => options.get(0).getValueAttribute
+      }
+    }
+  }
+
+  object Conversions {
+    implicit def htmlSelectToSelect(e: HtmlSelect) = Select(e)
+  }
+}
+
 trait Selenium { this: Browser =>
+  def apply(key:String) = Locator(key) match {
+    case ById(id) => Doj.on(page).get("#" + id)
+    case ByName(name) => Doj.on(page).get("input").withAttribute("name", name)
+    case _ =>
+      Doj.on(page).get(key)
+  }
 
   def open(url:String) = goto(url)
 

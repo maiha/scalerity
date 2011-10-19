@@ -1,7 +1,6 @@
-package sc.ala.scalerity.browser
+package sc.ala.scalerity
 
 import be.roam.hue.doj._
-import sc.ala.scalerity._
 
 /**
  * Created by IntelliJ IDEA.
@@ -11,10 +10,10 @@ import sc.ala.scalerity._
  * To change this template use File | Settings | File Templates.
  */
 
-
 trait Hue { this: Browser =>
 
-  def apply(key:String) = Doj.on(page).get(resolveLocator(key))
+//  def apply(key:String) = Doj.on(page).get(resolveLocator(key))
+  def doj = Doj.on(page)
 
   protected def resolveLocator(key:String) = Locator.test(key) match {
     case Some(ByName(value)) => "input[name='%s']".format(value)

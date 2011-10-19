@@ -1,4 +1,4 @@
-package sc.ala.scalerity.browser
+package sc.ala.scalerity
 
 /**
  * Created by IntelliJ IDEA.

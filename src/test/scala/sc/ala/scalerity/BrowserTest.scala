@@ -4,8 +4,7 @@ import org.scalatest.FunSuite
 import org.scalatest.matchers.ShouldMatchers
 import com.gargoylesoftware.htmlunit.BrowserVersion
 
-import sc.ala.scalerity.Browser
-import sc.ala.scalerity.browser.PageNotFound
+import sc.ala.scalerity._
 
 class BrowserTest extends FunSuite with ShouldMatchers with HtmlResource {
   def localFile = file("google-preferences.html")

@@ -7,11 +7,9 @@
  */
 
 
-package sc.ala.scalerity.browser
+package sc.ala.scalerity
 
 import com.gargoylesoftware.htmlunit.html.HtmlPage
-
-import sc.ala.scalerity.{Browser,Locator}
 
 trait Action { this: Browser =>
   def goto(url: String) = {

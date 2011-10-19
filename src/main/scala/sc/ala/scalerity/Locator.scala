@@ -11,13 +11,14 @@ package sc.ala.scalerity
 
 import sc.ala.scalerity.Locator.CannotResolve
 
+sealed abstract class Locator { def value: String }
+case class ById(value:String) extends Locator
+case class ByName(value:String) extends Locator
+case class ByLabel(value:String) extends Locator
+case class ByValue(value:String) extends Locator
+
 
 object Locator {
-  trait Value { def value: String }
-  case class ById(value:String) extends Value
-  case class ByName(value:String) extends Value
-  case class ByLabel(value:String) extends Value
-  case class ByValue(value:String) extends Value
 
   class CannotResolve(msg:String) extends RuntimeException(msg)
 
@@ -26,12 +27,16 @@ object Locator {
   val R_LABEL = """^label=(\w+)$""" r
   val R_VALUE = """^value=(\w+)$""" r
 
-  def apply(source:String) = source match {
-    case R_ID(value) => ById(value)
-    case R_NAME(value) => ByName(value)
-    case R_LABEL(value) => ByLabel(value)
-    case R_VALUE(value) => ByValue(value)
-    case _ => throw new CannotResolve(source)
+  def test(source:String) = source match {
+    case R_ID(value) => Some(ById(value))
+    case R_NAME(value) => Some(ByName(value))
+    case R_LABEL(value) => Some(ByLabel(value))
+    case R_VALUE(value) => Some(ByValue(value))
+    case _ => None
+  }
+
+  def apply(source:String) = test(source).getOrElse{
+    throw new CannotResolve(source)
   }
 
   // def unapply()

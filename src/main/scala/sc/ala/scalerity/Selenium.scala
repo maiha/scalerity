@@ -14,14 +14,14 @@ import com.gargoylesoftware.htmlunit.html.HtmlSelect
 import com.gargoylesoftware.htmlunit.html.HtmlOption
 
 import sc.ala.scalerity.{Browser,Locator}
-import sc.ala.scalerity.Locator._
+import sc.ala.scalerity._
 
 class ElementNotFound(msg:String) extends RuntimeException(msg)
 class OptionNotFound(msg:String) extends RuntimeException(msg)
 
 trait Selenium { this: Browser =>
 
-  def open(url:String) = goto _
+  def open(url:String) = goto(url)
 
   def select(key:String, value:String): HtmlOption = Locator(value) match {
     case ByLabel(label) =>

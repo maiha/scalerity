@@ -11,7 +11,7 @@ package sc.ala.scalerity.browser
 
 import com.gargoylesoftware.htmlunit.html.HtmlPage
 
-import sc.ala.scalerity._
+import sc.ala.scalerity.{Browser,Locator}
 
 trait Action { this: Browser =>
   def goto(url: String) = {
@@ -21,11 +21,9 @@ trait Action { this: Browser =>
     }
 
     pagable = Some(client.getPage[HtmlPage](uri))
-    this.url
+    this
   }
 
-  def value(locator:String, data:String) = {
-
-    // this()
-  }
+  // def value(locator:String, data:String)
+  //
 }

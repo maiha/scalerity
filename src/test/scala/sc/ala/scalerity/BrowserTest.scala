@@ -7,21 +7,22 @@ import com.gargoylesoftware.htmlunit.BrowserVersion
 import sc.ala.scalerity.Browser
 import sc.ala.scalerity.browser.PageNotFound
 
-class BrowserTest extends FunSuite with ShouldMatchers {
-  val google = "http://www.google.com"
+class BrowserTest extends FunSuite with ShouldMatchers with HtmlResource {
+  def localFile = file("google-preferences.html")
 
   test("default browserVersion") {
     expect(BrowserVersion.FIREFOX_3_6) { new Browser().browserVersion }
   }
 
-  test("goto returns an url") {
+  test("goto returns self") {
     val b = new Browser
-    // don't check url strictly to avoid localized url redirection
-    b.goto(google).toString should include("google")
+    expect(b) { b.goto(localFile) }
   }
 
   test("source") {
-    Browser(google).source should startWith("<")
+    val b = new Browser
+    b.open(localFile)
+    b.source should startWith("<")
   }
 
   test("source without url") {

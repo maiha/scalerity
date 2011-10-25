@@ -30,6 +30,15 @@ object Selenium {
         case _ => options.get(0).getValueAttribute
       }
     }
+
+    def text = {
+      val options = element.getSelectedOptions
+      options.size match {
+        case 0 => Select.default
+        case _ => options.get(0).getText
+      }
+    }
+    def label = text
   }
 
   object Conversions {

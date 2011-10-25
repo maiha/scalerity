@@ -18,6 +18,10 @@ class SeleniumTest extends FunSuite with ShouldMatchers with HtmlResource {
     expect("en") { page.select("name=hl").value }
   }
 
+  test("get selected label by selenium") {
+    expect("English") { page.select("name=hl").label }
+  }
+
   test("set selected value by selenium with label") {
     expect("ja") {
       val browser = page

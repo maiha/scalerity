@@ -5,7 +5,7 @@ import org.scalatest.BeforeAndAfterEach
 import org.scalatest.matchers.ShouldMatchers
 
 import sc.ala.scalerity.Browser
-import sc.ala.scalerity.Selenium.Conversions._
+import sc.ala.scalerity.Conversions._
 
 
 class SeleniumTest extends FunSuite with ShouldMatchers with HtmlResource

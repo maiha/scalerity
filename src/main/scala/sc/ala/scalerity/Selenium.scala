@@ -17,35 +17,6 @@ import be.roam.hue.doj._
 class ElementNotFound(msg:String) extends RuntimeException(msg)
 class OptionNotFound(msg:String) extends RuntimeException(msg)
 
-object Selenium {
-  object Select {
-    def default = ""
-  }
-
-  case class Select(element: HtmlSelect) {
-    def value = {
-      val options = element.getSelectedOptions
-      options.size match {
-        case 0 => Select.default
-        case _ => options.get(0).getValueAttribute
-      }
-    }
-
-    def text = {
-      val options = element.getSelectedOptions
-      options.size match {
-        case 0 => Select.default
-        case _ => options.get(0).getText
-      }
-    }
-    def label = text
-  }
-
-  object Conversions {
-    implicit def htmlSelectToSelect(e: HtmlSelect) = Select(e)
-  }
-}
-
 trait Selenium { this: Browser =>
   def apply(key:String) = Locator.test(key) match {
     case Some(ById(id)) => Doj.on(page).get("#" + id)

@@ -15,17 +15,17 @@ Usage
   browser.source // => "<?xml version=...
 
   // Like Selenium
-  import sc.ala.scalerity.Selenium.Conversions._
-
+  import sc.ala.scalerity.Conversions._
   browser.goto("http://www.google.com/preferences?hl=en")
   browser.select("name=hl").value  // => "en"
+  browser.select("name=hl","label=Japanese")
+  browser.select("name=hl").value  // => "ja"
 
 
 TODO
 ====
 
   browser.select("name=hl").value = "ja"
-  browser.select("name=hl", "value=ja")
 
   browser.value("name=q", "Scalerity")
   browser.click("name=btnK")

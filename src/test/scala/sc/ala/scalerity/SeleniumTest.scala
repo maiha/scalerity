@@ -16,9 +16,36 @@ with BeforeAndAfterEach {
     page = open("google-preferences.html")
   }
 
+  def forms = page.page.getForms
+  def form = forms.get(0)             // HtmlForm
+  def request = form.getWebRequest(firstSubmittable)
+
+  import com.gargoylesoftware.htmlunit.html.SubmittableElement
+  def firstSubmittable = page("form input,select").getElement(0) match {
+    case e:SubmittableElement => e
+    case _ => sys.error("no submittable elements")
+  }
+
+  //////////////////////////////////////////////////
+  // INPUT HIDDEN form
+  // <input type="hidden" value="0_339" name="sig">
+
   test("get hidden value by selenium") {
     expect("0_339") { page("name=sig").value }
   }
+
+  //////////////////////////////////////////////////
+  // SELECT form
+  // <select name="hl">
+  /*
+    [English  ]
+    ┌─────────┐
+    │Afrikaans│
+    │English  │
+    │Japanese │
+    │Korean   │
+    └─────────┘
+  */
 
   test("get selected value by selenium") {
     expect("en") { page.select("name=hl").value }

@@ -47,10 +47,10 @@ object Selenium {
 }
 
 trait Selenium { this: Browser =>
-  def apply(key:String) = Locator(key) match {
-    case ById(id) => Doj.on(page).get("#" + id)
-    case ByName(name) => Doj.on(page).get("input,select").withAttribute("name", name)
-    case l:Locator => notImplementedYet("apply: " + l)
+  def apply(key:String) = Locator.test(key) match {
+    case Some(ById(id)) => Doj.on(page).get("#" + id)
+    case Some(ByName(name)) => Doj.on(page).get("input,select").withAttribute("name", name)
+    case Some(l:Locator) => notImplementedYet("apply: " + l)
     case _ =>
       Doj.on(page).get(key)
   }

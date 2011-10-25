@@ -11,6 +11,8 @@ package sc.ala.scalerity
 trait TODO {
 
   // not implemented yet
-  def clickAndWait = sys.error("not implemented yet")
+  def clickAndWait = notImplementedYet("clickAndWait")
 
+  def notImplementedYet(name:String) =
+    sys.error("[%s] is not implemented yet".format(name))
 }

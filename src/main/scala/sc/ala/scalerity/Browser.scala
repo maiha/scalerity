@@ -4,8 +4,6 @@ import com.gargoylesoftware.htmlunit.WebClient
 import com.gargoylesoftware.htmlunit.html.{HtmlPage,HtmlElement}
 import com.gargoylesoftware.htmlunit.BrowserVersion
 
-import sc.ala.scalerity._
-
 class Browser extends Core with Action with Selenium with Hue with TODO {
   // configurable options
   def browser = "firefox"

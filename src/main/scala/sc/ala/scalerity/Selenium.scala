@@ -13,7 +13,6 @@ import com.gargoylesoftware.htmlunit.html.HtmlElement
 import com.gargoylesoftware.htmlunit.html.HtmlSelect
 import com.gargoylesoftware.htmlunit.html.HtmlOption
 import be.roam.hue.doj._
-import sc.ala.scalerity._
 
 class ElementNotFound(msg:String) extends RuntimeException(msg)
 class OptionNotFound(msg:String) extends RuntimeException(msg)
@@ -41,7 +40,7 @@ object Selenium {
 trait Selenium { this: Browser =>
   def apply(key:String) = Locator(key) match {
     case ById(id) => Doj.on(page).get("#" + id)
-    case ByName(name) => Doj.on(page).get("input").withAttribute("name", name)
+    case ByName(name) => Doj.on(page).get("input,select").withAttribute("name", name)
     case _ =>
       Doj.on(page).get(key)
   }
@@ -57,6 +56,7 @@ trait Selenium { this: Browser =>
           opt
         case _ => optionNotFound(key + "=>" + value)
       }
+    case l:Locator => notImplementedYet("select: " + l)
     case _ => optionNotFound(key + "=>" + value)
   }
 

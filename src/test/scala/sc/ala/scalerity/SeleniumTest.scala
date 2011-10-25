@@ -3,6 +3,10 @@ package sc.ala.test
 import org.scalatest.FunSuite
 import org.scalatest.matchers.ShouldMatchers
 
+import sc.ala.scalerity.Browser
+import sc.ala.scalerity.Selenium.Conversions._
+
+
 class SeleniumTest extends FunSuite with ShouldMatchers with HtmlResource {
   def page = open("google-preferences.html")
 
@@ -11,7 +15,6 @@ class SeleniumTest extends FunSuite with ShouldMatchers with HtmlResource {
   }
 
   test("get selected value by selenium") {
-    import sc.ala.scalerity.Selenium.Conversions._
-    expect("en") { page("name=hl").value }
+    expect("en") { page.select("name=hl").value }
   }
 }

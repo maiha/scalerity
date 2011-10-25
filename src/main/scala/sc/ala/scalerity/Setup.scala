@@ -11,8 +11,6 @@
 package sc.ala.scalerity
 
 import com.gargoylesoftware.htmlunit.html.HtmlPage
-
-import sc.ala.scalerity._
 import com.gargoylesoftware.htmlunit.{WebClient, BrowserVersion}
 
 trait Setup { this: Core =>
